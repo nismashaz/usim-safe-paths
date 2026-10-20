@@ -169,7 +169,7 @@ function ReportForm({ picked, onCancel, onSubmit }: { picked: [number, number] |
     onSubmit({
       id: `u${Date.now()}`, title: CATEGORIES[category].label, category, description: desc.trim(),
       date: new Date().toISOString().slice(0, 10), status: "Pending", lat: picked[0], lng: picked[1],
-      locationText: loc.trim() || `${picked[0].toFixed(5)}, ${picked[1].toFixed(5)}`, demo: false, photo,
+      locationText: loc.trim() || `${picked[0].toFixed(5)}, ${picked[1].toFixed(5)}`, demo: false, ...(photo ? { photo } : {}),
     });
   };
 
