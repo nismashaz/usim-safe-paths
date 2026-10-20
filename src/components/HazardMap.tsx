@@ -28,7 +28,7 @@ function Controller({ focus, markers }: { focus: { id: string; n: number } | nul
   return null;
 }
 
-function Picker({ onPick }: { onPick?: (lat: number, lng: number) => void }) {
+function Picker({ onPick }: { onPick: ((lat: number, lng: number) => void) | undefined }) {
   useMapEvents({ click: (e) => onPick?.(e.latlng.lat, e.latlng.lng) });
   return null;
 }
