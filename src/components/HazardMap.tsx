@@ -47,9 +47,7 @@ export default function HazardMap({
   return (
     <MapContainer bounds={b} boundsOptions={{ padding: [10, 10] }} minZoom={15} maxZoom={19} maxBounds={b.pad(0.6)} maxBoundsViscosity={1} className={`h-full w-full ${picking ? "cursor-crosshair" : ""}`}>
       <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" maxZoom={19} />
-      <Polygon positions={CAMPUS_POLYGON} pathOptions={{ color: "#1e3a5f", weight: 2, dashArray: "6 6", fillOpacity: 0.03 }}>
-        <Popup>Approximate prototype boundary — not an official USIM boundary.</Popup>
-      </Polygon>
+      <Polygon positions={CAMPUS_POLYGON} interactive={false} pathOptions={{ color: "#1e3a5f", weight: 2, dashArray: "6 6", fillOpacity: 0.03, interactive: false }} />
       {reports.map((r) => (
         <Marker key={r.id} position={[r.lat, r.lng]} icon={icon(r)} ref={(m) => { if (m) markers.current[r.id] = m; }}>
           <Popup>
